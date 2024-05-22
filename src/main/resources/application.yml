@@ -1,0 +1,35 @@
+server:
+  port: 8080
+
+spring:
+  profiles:
+    active: pron
+  main:
+    allow-circular-references: true
+  datasource:
+    url: jdbc:mysql://${symm.datasource.host}:${symm.datasource.port}/${symm.datasource.database}
+    username: ${symm.datasource.username}
+    password: ${symm.datasource.password}
+    driver-class-name: ${symm.datasource.driver-class-name}
+
+
+mybatis-plus:
+  mapper-locations: classpath:/mapper/*.xml
+  typeAliasesPackage: com.swshenyun.usercenter.pojo
+  global-config:
+    db-config:
+      logic-delete-field: deleted
+      logic-delete-value: 1
+      logic-not-delete-value: 0
+  configuration:
+    map-underscore-to-camel-case: true
+
+logging:
+  level:
+    com:
+      swshenyun:
+        usercenter:
+          mapper: debug
+          service: info
+          controller: info
+
